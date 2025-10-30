@@ -1,0 +1,79 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "customerId",
+      "employeeId",
+      "saleDate",
+      "items",
+      "total"
+    ],
+    "properties": {
+      "customerId": {
+        "bsonType": "objectId",
+        "description": "Reference to customers._id"
+      },
+      "employeeId": {
+        "bsonType": "objectId",
+        "description": "Reference to employees._id (who sold)"
+      },
+      "saleDate": {
+        "bsonType": "date",
+        "description": "Timestamp of the sale (date and time)."
+      },
+      "items": {
+        "bsonType": "array",
+        "minItems": 1,
+        "items": {
+          "bsonType": "object",
+          "required": [
+            "glassesId",
+            "quantity",
+            "unitPrice"
+          ],
+          "properties": {
+            "glassesId": {
+              "bsonType": "objectId",
+              "description": "Reference to glasses._id"
+            },
+            "quantity": {
+              "bsonType": "int",
+              "minimum": 1
+            },
+            "unitPrice": {
+              "bsonType": "decimal",
+              "minimum": 0
+            },
+            "discount": {
+              "bsonType": "decimal",
+              "description": "Per-line discount in currency or percent if you prefer a separate field."
+            },
+            "subtotal": {
+              "bsonType": "decimal",
+              "minimum": 0,
+              "description": "Optional precomputed line subtotal."
+            }
+          }
+        },
+        "description": "Sold glasses per line."
+      },
+      "notes": {
+        "bsonType": "string"
+      },
+      "paymentMethod": {
+        "bsonType": "string",
+        "enum": [
+          "cash",
+          "card",
+          "transfer",
+          "other"
+        ]
+      },
+      "total": {
+        "bsonType": "decimal",
+        "minimum": 0,
+        "description": "Final sale total at transaction time."
+      }
+    }
+  }
+}

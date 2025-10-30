@@ -1,0 +1,76 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "name",
+      "address",
+      "telephone",
+      "fax",
+      "nif"
+    ],
+    "properties": {
+      "name": {
+        "bsonType": "string",
+        "description": "The provider's name."
+      },
+      "address": {
+        "bsonType": "object",
+        "required": [
+          "street",
+          "number",
+          "floor",
+          "apartment",
+          "city",
+          "postal_code",
+          "country"
+        ],
+        "properties": {
+          "street": {
+            "bsonType": "string",
+            "description": "Street name."
+          },
+          "number": {
+            "bsonType": "int",
+            "minimum": 1,
+            "description": "Street number."
+          },
+          "floor": {
+            "bsonType": "int",
+            "description": "Floor number"
+          },
+          "apartment": {
+            "bsonType": "string",
+            "description": "Apartment name."
+          },
+          "city": {
+            "bsonType": "string",
+            "description": "Name of the city."
+          },
+          "postal_code": {
+            "bsonType": "string",
+            "description": "Postal code."
+          },
+          "country": {
+            "bsonType": "string",
+            "description": "Name of the country."
+          }
+        }
+      },
+      "telephone": {
+        "bsonType": "string",
+        "pattern": "^\\+?[0-9\\-\\s]{6,20}$",
+        "description": "Telephone number."
+      },
+      "fax": {
+        "bsonType": "string",
+        "pattern": "^\\+?[0-9\\-\\s]{6,20}$",
+        "description": "Fax number."
+      },
+      "nif": {
+        "bsonType": "string",
+        "pattern": "^([0-9]{8}[A-Z]|[XYZ][0-9]{7}[A-Z])$",
+        "description": "ID number."
+      }
+    }
+  }
+}

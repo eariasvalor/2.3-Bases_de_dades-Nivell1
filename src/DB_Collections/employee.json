@@ -1,0 +1,33 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "firstName",
+      "lastName",
+      "email",
+      "hireDate"
+    ],
+    "properties": {
+      "firstName": {
+        "bsonType": "string"
+      },
+      "lastName": {
+        "bsonType": "string"
+      },
+      "email": {
+        "bsonType": "string",
+        "pattern": "^[\\w\\.-]+@[\\w\\.-]+\\.[A-Za-z]{2,}$"
+      },
+      "telephone": {
+        "bsonType": "string",
+        "pattern": "^\\+?[0-9\\-\\s]{6,20}$"
+      },
+      "hireDate": {
+        "bsonType": "date"
+      },
+      "active": {
+        "bsonType": "bool"
+      }
+    }
+  }
+}

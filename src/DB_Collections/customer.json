@@ -1,0 +1,78 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "name",
+      "address",
+      "telephone",
+      "email",
+      "registrationDate"
+    ],
+    "properties": {
+      "name": {
+        "bsonType": "string",
+        "description": "Customer's full name."
+      },
+      "address": {
+        "bsonType": "object",
+        "required": [
+          "street",
+          "number",
+          "city",
+          "postalCode",
+          "country"
+        ],
+        "properties": {
+          "street": {
+            "bsonType": "string",
+            "description": "Street name."
+          },
+          "number": {
+            "bsonType": "int",
+            "minimum": 1,
+            "description": "Street number."
+          },
+          "floor": {
+            "bsonType": "string",
+            "description": "Floor or apartment identifier (optional)."
+          },
+          "city": {
+            "bsonType": "string",
+            "description": "City name."
+          },
+          "postalCode": {
+            "bsonType": "string",
+            "pattern": "^[0-9]{5}$",
+            "description": "Postal code (5 digits)."
+          },
+          "country": {
+            "bsonType": "string",
+            "description": "Country name."
+          }
+        },
+        "description": "Customer's postal address."
+      },
+      "telephone": {
+        "bsonType": "string",
+        "pattern": "^\\+?[0-9\\-\\s]{6,20}$",
+        "description": "Telephone number (optional +, digits, spaces or dashes)."
+      },
+      "email": {
+        "bsonType": "string",
+        "pattern": "^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,}$",
+        "description": "Customer\"s email address."
+      },
+      "registrationDate": {
+        "bsonType": "date",
+        "description": "Date when the customer was registered."
+      },
+      "recommendedBy": {
+        "bsonType": [
+          "objectId",
+          "null"
+        ],
+        "description": "Reference to the customer who recommended this one (if any)."
+      }
+    }
+  }
+}

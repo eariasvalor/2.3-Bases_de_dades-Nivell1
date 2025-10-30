@@ -1,0 +1,80 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "brand",
+      "frameType",
+      "frameColor",
+      "lenses",
+      "price"
+    ],
+    "properties": {
+      "brand": {
+        "bsonType": "string",
+        "description": "Brand of the glasses."
+      },
+      "frameType": {
+        "bsonType": "string",
+        "enum": [
+          "rimless",
+          "plastic",
+          "metal"
+        ],
+        "description": "Type of frame."
+      },
+      "frameColor": {
+        "bsonType": "string",
+        "description": "Color of the frame."
+      },
+      "lenses": {
+        "bsonType": "object",
+        "required": [
+          "left",
+          "right"
+        ],
+        "properties": {
+          "left": {
+            "bsonType": "object",
+            "required": [
+              "power",
+              "color"
+            ],
+            "properties": {
+              "power": {
+                "bsonType": "decimal",
+                "description": "Left lens prescription (diopters)."
+              },
+              "color": {
+                "bsonType": "string",
+                "description": "Left lens color."
+              }
+            }
+          },
+          "right": {
+            "bsonType": "object",
+            "required": [
+              "power",
+              "color"
+            ],
+            "properties": {
+              "power": {
+                "bsonType": "decimal",
+                "description": "Right lens prescription (diopters)."
+              },
+              "color": {
+                "bsonType": "string",
+                "description": "Right lens color."
+              }
+            }
+          }
+        },
+        "description": "Per-lens prescription and color."
+      },
+      "price": {
+        "bsonType": "decimal",
+        "minimum": 0,
+        "description": "Price of the glasses."
+      }
+    }
+  }
+}
